@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 🎂</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+}
+
+/* COMMON */
+section{
+  min-height:100vh;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:40px 20px;
+  animation:fade 0.6s ease;
+}
+
+@keyframes fade{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+button{
+  padding:14px 28px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#f7971e,#ffd200);
+  color:#1a1a1a;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  margin:10px;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* HOME */
+#home{
+  display:flex;
+}
+
+.home-box{
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(8px);
+  padding:50px 40px;
+  border-radius:25px;
+  width:360px;
+  text-align:center;
+}
+
+.badge{
+  background:#ffd200;
+  color:#1a1a1a;
+  padding:6px 18px;
+  border-radius:20px;
+  display:inline-block;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.home-box h1{
+  color:#ffd200;
+  margin-bottom:10px;
+}
+
+.qualities{
+  display:flex;
+  justify-content:space-around;
+  margin:25px 0;
+  font-size:16px;
+}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:20px;
+  max-width:800px;
+}
+
+.card{
+  text-align:center;
+}
+
+.card img{
+  width:100%;
+  border-radius:15px;
+  border:3px solid #ffd200;
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.card p{
+  margin-top:8px;
+  color:#ffd200;
+}
+
+/* SURPRISE */
+.slideshow{
+  width:500px;
+  height:400px;
+  position:relative;
+  margin:25px auto;
+  display:none;
+}
+
+.slide{
+  width:100%;
+  height:100%;
+  border-radius:18px;
+  position:absolute;
+  opacity:0;
+  transition:opacity 1s;
+  border:4px solid #ffd200;
+}
+
+.slide.active{
+  opacity:1;
+}
+
+.message{
+  display:none;
+  font-size:21px;
+  margin-top:20px;
+  color:#ffd200;
+  max-width:500px;
+  text-align:center;
+}
+
+/* LETTER */
+.letter{
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(8px);
+  padding:45px;
+  border-radius:22px;
+  max-width:520px;
+  text-align:center;
+}
+
+.letter h2{
+  color:#ffd200;
+  margin-bottom:20px;
+}
+
+.letter p{
+  margin:15px 0;
+  font-size:18px;
+  line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<section id="home">
+  <div class="home-box">
+    <div class="badge">🏅 World’s Best Man</div>
+    <h1>Happy Birthday 🎉</h1>
+    <p>Thank you for everything you do 💙</p>
+
+    <div class="qualities">
+      <span>💪 Strength</span>
+      <span>🧠 Wisdom</span>
+      <span>❤️ Care</span>
+      <span>🛡️ Protection</span>
+    </div>
+
+    <button onclick="showSection('gallery')">📸 Memories</button>
+    <button onclick="showSection('surprise')">🎁 Surprise</button>
+    <button onclick="showSection('letter')">💌 Message</button>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <h2 style="color:#ffd200;">OUR HERO</h2>
+  <br>
+  
+
+  <div class="gallery">
+    <div class="card">
+      <img src="images/image1.jpeg">
+	  <br>
+      <p>Always our hero</p>
+    </div>
+    <div class="card">
+      <img src="images/image2.jpeg">
+	  <br>
+      <p>Captain Cool</p>
+    </div>
+    <div class="card">
+      <img src="images/image3.jpeg">
+	  <br>
+      <p>Superman</p>
+    </div>
+    <div class="card">
+      <img src="images/image4.jpeg">
+	  <br>
+      <p>Forever grateful</p>
+    </div>
+  </div>
+
+  <button onclick="showSection('home')">⬅ Back</button>
+</section>
+
+<!-- SURPRISE -->
+<section id="surprise">
+  <h2 style="color:#ffd200;">A Small Surprise 💝</h2>
+
+  <button onclick="startSurprise()">Click to Open 🎶</button>
+
+  <audio id="music" src="music.mp3"></audio>
+
+  <div class="slideshow" id="slideshow">
+    <img src="images/image5.jpg" class="slide active">
+    <img src="images/image6.jpeg" class="slide">
+    <img src="images/image7.jpg" class="slide">
+  </div>
+
+  <div class="message" id="message"></div>
+
+  <button onclick="showSection('home')">⬅ Back</button>
+</section>
+
+<!-- LETTER -->
+<section id="letter">
+  <div class="letter">
+    <h2>Dear Captain Cool 💙</h2>
+    <p>On this day i want you to know how big a impact you have 
+	in all our lives they way you handle everything without us
+	even asking and solving all the problems that we face as if 
+	they are nothing and not thinking about yourself 
+    </p>
+    <p>
+      We are proud to have you.
+    </p>
+    <h3 style="color:#ffd200;">Love & Respect</h3>
+  </div>
+
+  <button onclick="showSection('home')">⬅ Back</button>
+</section>
+
+<script>
+function showSection(id){
+  document.querySelectorAll("section").forEach(s=>s.style.display="none");
+  document.getElementById(id).style.display="flex";
+}
+
+/* Slideshow + Music Fade + Typewriter */
+let index=0;
+const text="Thank you for being our strength, guide, and hero 💙";
+
+function startSurprise(){
+  const music=document.getElementById("music");
+  music.volume=0;
+  music.play();
+
+  let vol=0;
+  let fade=setInterval(()=>{
+    if(vol<1){
+      vol+=0.05;
+      music.volume=vol;
+    }else clearInterval(fade);
+  },200);
+
+  document.getElementById("slideshow").style.display="block";
+  document.getElementById("message").style.display="block";
+
+  const slides=document.querySelectorAll(".slide");
+  setInterval(()=>{
+    slides[index].classList.remove("active");
+    index=(index+1)%slides.length;
+    slides[index].classList.add("active");
+  },2500);
+
+  let i=0;
+  document.getElementById("message").innerHTML="";
+  let type=setInterval(()=>{
+    if(i<text.length){
+      document.getElementById("message").innerHTML+=text.charAt(i);
+      i++;
+    }else clearInterval(type);
+  },50);
+}
+</script>
+
+</body>
+</html>
